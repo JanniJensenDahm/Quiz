@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Quiz} from "../entities/quiz";
+import {TempDataService} from "../service/temp-data.service";
 
 @Component({
   selector: 'app-quiz',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  constructor() { }
+  quiz: Quiz;
+
+  constructor(private tempData: TempDataService) { }
 
   ngOnInit() {
+    /*
+    const id = '1';
+    this.quiz = this.tempData.findQuiz(id)
+    */
+    this.quiz = this.tempData.getQuiz();
   }
 
 }

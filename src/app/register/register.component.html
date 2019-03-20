@@ -1,3 +1,54 @@
-<p>
-  register works!
-</p>
+<form class="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <h1>Register</h1>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Firstname" type="text" formControlName="name">
+        <mat-error *ngIf="registerForm.controls.name.error?.required && registerForm.controls.name.touched">
+          You must fill out your Firstname
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Lastname" type="text" formControlName="name">
+        <mat-error *ngIf="registerForm.controls.name.error?.required && registerForm.controls.name.touched">
+          You must fill out your Lastname
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Age" type="text" formControlName="age">
+        <mat-error *ngIf="registerForm.controls.age.error?.required && registerForm.controls.age.touched">
+          You must fill out your Age
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Username" type="text" formControlName="username">
+        <mat-error *ngIf="registerForm.controls.username.error?.required && registerForm.controls.username.touched">
+          You must choose a Username
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="text" formControlName="password">
+        <mat-error *ngIf="registerForm.controls.password.error?.required && registerForm.controls.password.touched">
+          You must choose a Password
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button class="button buttonSave" type="submit">Save</button>
+    </div>
+  </div>
+</form>
