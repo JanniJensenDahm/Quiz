@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Quiz} from "../entities/quiz";
+import {TempDataService} from "../service/temp-data.service";
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  quizzes: Quiz[];
+
+  constructor(private tempData: TempDataService) { }
 
   ngOnInit() {
+
+    this.quizzes = this.tempData.getQuizzes();
   }
 
 }

@@ -1,3 +1,12 @@
-<p>
-  all-quizzes works!
-</p>
+<mat-card class="quiz-matcard" *ngFor="let quiz of quizzes">
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{quiz.title}}</h1>
+      <h3>Number of questions: {{quiz.questions.length}}</h3>
+
+    </mat-card-title>
+  </mat-card-header>
+
+</mat-card>
+
+

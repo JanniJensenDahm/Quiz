@@ -33,6 +33,10 @@ export class LoginComponent implements OnInit {
         this.authService.login(true).subscribe(result => {
           this.router.navigate(['user/allQuizzes']);
         });
+      } else {
+        this.authService.login(false).subscribe(result => {
+          this.router.navigate(['user/allQuizzes'])
+        })
       }
     } else {
       //Show an error message
