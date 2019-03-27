@@ -10,18 +10,41 @@ export class TempDataService {
   quizzes: Quiz[];
 
   constructor() {
-    this.quizzes = this.getQuizzes();
+    this.quizzes = [];
   }
 
-  saveQuiz(quiz: Quiz): void{
-    this.quizzes.push(quiz)
+  saveQuiz(quiz): void{
+    this.quizzes.push({
+      _id: String(this.quizzes.length + 1),
+      visible: false,
+      user: {
+        _id: '1',
+        username: 'something',
+        password: 'testPass',
+        email: 'test@test.dk',
+        gender: Gender.FEMALE,
+        birthDate: new Date(1994, 11, 9)
+      },
+      title: quiz.title,
+      questions: quiz.questions
+    });
+
+    console.log(this.quizzes)
+  }
+
+  getQuiz(id: string): Quiz {
+    return this.getQuizzes().find(quiz => quiz._id === id);
+  }
+
+  getQuizzes(): Quiz [] {
+    return this.quizzes;
   }
 
   findQuiz(searchForId: string): Quiz {
     return this.getQuizzes().find(quiz => quiz._id === searchForId);
   }
 
-  getQuizzes(): Quiz[] {
+  /*getQuizzes(): Quiz[] {
     return [
       {
         _id: '1',
@@ -104,5 +127,5 @@ export class TempDataService {
         }
       ]
     };
-  }
+  }*/
 }

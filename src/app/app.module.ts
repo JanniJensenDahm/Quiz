@@ -17,8 +17,10 @@ import { UserComponent } from './user/user.component';
 import { AllQuizzesComponent } from './all-quizzes/all-quizzes.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {MatCardModule} from "@angular/material/card";
+import { MatCardModule } from "@angular/material/card";
 import { HomeComponent } from './home/home.component';
+import { MatButtonModule } from '@angular/material/button';
+import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { HomeComponent } from './home/home.component';
     CreateQuizComponent,
     PageNotFoundComponent,
     HomeComponent,
+    DisplayQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { HomeComponent } from './home/home.component';
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'login', component: LoginComponent },
     ]},
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard],
+  { path: 'user', component: UserComponent, /*canActivate: [AuthGuard],*/
     children: [
       { path: 'allQuizzes', component: AllQuizzesComponent },
       { path: 'quiz', component: QuizComponent},
