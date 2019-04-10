@@ -1,11 +1,18 @@
 .empty-space{
   flex: 1 1 auto
 }
+
 p {
   margin: 10px;
   font-family: "Comic Sans MS";
 }
+
 .title{
-  font-size: 50px;
-  font-family: "Comic Sans MS";
+  height: 45px;
 }
+
+#homeBtn{
+  width: 135px;
+  height: 50px;
+}
+

@@ -1,11 +1,11 @@
 <form [formGroup]="createQuiz" (ngSubmit)="saveNewQuiz()" autocomplete="off">
   <div>
     <mat-form-field >
-      <input matInput placeholder="Quiz Title" formControlName="title">
+      <input id="quizTitle" matInput placeholder="Quiz Title" formControlName="title">
     </mat-form-field>
   </div>
   <div>
-    <button type="button" mat-raised-button color="secondary" (click)="createNewQuestion()">New Question</button>
+    <button id="newQuestion" type="button" mat-raised-button color="secondary" (click)="createNewQuestion()">New Question</button>
   </div>
 
   <div formArrayName="questions">
@@ -29,5 +29,5 @@
     </div>
   </div>
 
-  <button mat-raised-button color="primary" type="submit">Save Quiz</button>
+  <button mat-raised-button id="saveQuiz" color="primary" type="submit">Save Quiz</button>
 </form>

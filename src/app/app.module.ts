@@ -20,7 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MatCardModule } from "@angular/material/card";
 import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
-import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
+import { QuizInputOutputComponent } from './quiz-input-output/quiz-input-output.component';
 
 
 @NgModule({
@@ -36,7 +36,7 @@ import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
     CreateQuizComponent,
     PageNotFoundComponent,
     HomeComponent,
-    DisplayQuizComponent
+    QuizInputOutputComponent,
   ],
   imports: [
     BrowserModule,

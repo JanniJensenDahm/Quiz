@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       if (this.loginForm.value.username === 'admin') {
         //Login as admin
         this.authService.login(true).subscribe(result => {
-          this.router.navigate(['user/allQuizzes']);
+          this.router.navigate(['user/admin']);
         });
       } else {
         this.authService.login(false).subscribe(result => {

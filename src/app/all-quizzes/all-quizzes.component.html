@@ -1,13 +1,5 @@
-<mat-card class="quiz-matcard" *ngFor="let quiz of quizzes">
-  <mat-card-header>
-    <mat-card-title>
-      <h1>{{quiz.title}}</h1>
-      <h3>Number of questions: {{quiz.questions.length}}</h3>
-
-      <button mat-fab>Start</button>
-    </mat-card-title>
-  </mat-card-header>
-
-</mat-card>
+<div class="quiz-matcard" *ngFor="let quiz of quizzes">
+  <app-quiz-input-output [quizInput]="quiz" (quizClicked)="clickQuiz($event)"></app-quiz-input-output>
+</div>
 
 

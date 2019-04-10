@@ -1,7 +1,8 @@
 <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-card-title id="login">Login</mat-card-title>
   <div>
     <mat-form-field>
-      <input matInput type="text" placeholder="Username" formControlName="username">
+      <input id="username" matInput type="text" placeholder="Username" formControlName="username">
       <mat-error *ngIf="loginForm.controls.username.error?.required && loginForm.controls.username.touched">
         You must fill out the username
       </mat-error>
@@ -13,7 +14,7 @@
 
   <div>
     <mat-form-field>
-      <input matInput type="password" placeholder="Password" formControlName="password">
+      <input id="password" matInput type="password" placeholder="Password" formControlName="password">
       <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
         You must fill out the password
       </mat-error>
@@ -21,5 +22,8 @@
   </div>
 
   <button routerLink="/register" type="button" class="button buttonRegister">Register</button>
-  <button type="submit" class="button buttonLogin" [disabled]="!loginForm.valid">Login</button>
+  <button id="loginBtn" type="submit" class="button buttonLogin" [disabled]="!loginForm.valid">Login</button>
 </form>
+
+
+

@@ -15,7 +15,7 @@ import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
   //Base url go to about
-  { path: '', redirectTo: 'home/about', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
 
   {path: 'home', component: HomeComponent, children:[
       { path: 'about', component: AboutComponent },
@@ -24,11 +24,12 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, /*canActivate: [AuthGuard],*/
     children: [
       { path: 'allQuizzes', component: AllQuizzesComponent },
-      { path: 'quiz', component: QuizComponent},
       { path: 'createQuiz', component: CreateQuizComponent },
+      { path: 'quiz/:id', component: QuizComponent },
       { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]}
     ]},
   { path: 'register', component: RegisterComponent},
+
 
   //If nothing matches, show page not found
   { path: '**', component: PageNotFoundComponent}
