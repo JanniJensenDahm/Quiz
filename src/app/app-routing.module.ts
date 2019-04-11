@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent} from "./login/login.component";
-import { QuizComponent } from "./quiz/quiz.component";
 import { RegisterComponent } from "./register/register.component";
 import { AboutComponent } from "./about/about.component";
 import { UserComponent } from "./user/user.component";
@@ -12,6 +11,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AdminGuard} from "./auth/admin.guard";
 import {HomeComponent} from "./home/home.component";
+import {DisplayQuizComponent} from "./display-quiz/display-quiz.component";
 
 const routes: Routes = [
   //Base url go to about
@@ -25,7 +25,7 @@ const routes: Routes = [
     children: [
       { path: 'allQuizzes', component: AllQuizzesComponent },
       { path: 'createQuiz', component: CreateQuizComponent },
-      { path: 'quiz/:id', component: QuizComponent },
+      { path: 'displayQuiz/:id', component: DisplayQuizComponent },
       { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]}
     ]},
   { path: 'register', component: RegisterComponent},

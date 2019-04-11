@@ -1,5 +1,5 @@
 <div class="quiz-matcard" *ngFor="let quiz of quizzes">
-  <app-quiz-input-output [quizInput]="quiz" (quizClicked)="clickQuiz($event)"></app-quiz-input-output>
+  <app-quiz [quizInput]="quiz" (quizClicked)="quizClicked($event)"></app-quiz>
 </div>
 
 

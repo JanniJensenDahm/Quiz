@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { QuizComponent } from './quiz/quiz.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule, MatFormFieldModule, MatInputModule, MatMenuModule } from "@angular/material";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -20,15 +19,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MatCardModule } from "@angular/material/card";
 import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
-import { QuizInputOutputComponent } from './quiz-input-output/quiz-input-output.component';
-
+import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
+import {QuizComponent} from "./quiz/quiz.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    QuizComponent,
     AboutComponent,
     AdminComponent,
     UserComponent,
@@ -36,7 +34,8 @@ import { QuizInputOutputComponent } from './quiz-input-output/quiz-input-output.
     CreateQuizComponent,
     PageNotFoundComponent,
     HomeComponent,
-    QuizInputOutputComponent,
+    DisplayQuizComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

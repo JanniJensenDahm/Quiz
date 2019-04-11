@@ -10,12 +10,12 @@
 
   <div formArrayName="questions">
     <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
-      <div [formGroupName]="i">
+      <div class="newQuestion" [formGroupName]="i">
         <mat-form-field >
           <input matInput placeholder="Question" formControlName="title">
         </mat-form-field>
 
-        <div formArrayName="options">
+        <div  formArrayName="options">
           <div *ngFor="let optionControl of questionControl.controls.options.controls; let j=index">
             <div [formGroupName]="j">
               <mat-form-field>
@@ -29,5 +29,5 @@
     </div>
   </div>
 
-  <button mat-raised-button id="saveQuiz" color="primary" type="submit">Save Quiz</button>
+  <button mat-raised-button id="saveQuiz" color="primary" type="submit">Save</button>
 </form>

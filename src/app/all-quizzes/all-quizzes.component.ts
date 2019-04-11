@@ -19,9 +19,9 @@ export class AllQuizzesComponent implements OnInit {
     this.quizzes = this.tempData.getQuizzes();
   }
 
-  clickQuiz(quiz : Quiz) {
+  quizClicked(quiz : Quiz) {
     console.log(quiz);
-    this.router.navigate(['/user/quiz/' + quiz._id]);
+    this.router.navigate(['/user/displayQuiz/' + quiz._id]);
   }
 
 }

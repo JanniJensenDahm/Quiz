@@ -1,14 +1,9 @@
-<div>
-  Quiz Title: {{quiz.title}}
-</div>
-
-<div *ngFor="let question of quiz.questions">
-  {{question.title}}
-
-  <div *ngFor="let option of question.options">
-    {{option.answer}}
-
-  </div>
-
-  <br>
-</div>
+<mat-card (click)="clickedQuiz()">
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{quizInput.title}}</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <h3>Number of questions: {{quizInput.questions.length}}</h3>
+  <button mat-fab routerLink="../displayQuiz/{{quizInput._id}}">Start</button>
+</mat-card>

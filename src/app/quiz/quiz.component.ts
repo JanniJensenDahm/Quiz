@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from "../entities/quiz";
 import {TempDataService} from "../service/temp-data.service";
 import {ActivatedRoute} from "@angular/router";
@@ -10,19 +10,15 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class QuizComponent implements OnInit {
 
-  quiz: Quiz;
+  @Input() quizInput : Quiz;
+  @Output() quizClicked : EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(
-    private tempData: TempDataService,
-    private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    /*
-    const id = '1';
-    this.quizInput = this.tempData.findQuiz(id)
-    */
-    const id = this.route.snapshot.paramMap.get("id");
-    this.quiz = this.tempData.getQuiz(id);
   }
 
+  clickedQuiz() {
+    this.quizClicked.emit(this.quizInput);
+  }
 }
