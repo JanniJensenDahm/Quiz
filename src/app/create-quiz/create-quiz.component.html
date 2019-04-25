@@ -1,33 +1,38 @@
 <form [formGroup]="createQuiz" (ngSubmit)="saveNewQuiz()" autocomplete="off">
-  <div>
-    <mat-form-field >
-      <input id="quizTitle" matInput placeholder="Quiz Title" formControlName="title">
-    </mat-form-field>
-  </div>
-  <div>
-    <button id="newQuestion" type="button" mat-raised-button color="secondary" (click)="createNewQuestion()">New Question</button>
-  </div>
+  <div class="newQuiz">
+    <div>
+      <mat-form-field>
+        <input id="quizTitle" matInput placeholder="Quiz Title" formControlName="title">
+      </mat-form-field>
+    </div>
+    <div>
+      <button id="newQuestion" type="button" mat-raised-button color="secondary" (click)="createNewQuestion()">New
+        Question
+      </button>
+    </div>
 
-  <div formArrayName="questions">
-    <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
-      <div class="newQuestion" [formGroupName]="i">
-        <mat-form-field >
-          <input matInput placeholder="Question" formControlName="title">
-        </mat-form-field>
+    <div formArrayName="questions">
+      <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
+        <div class="newQuestion" [formGroupName]="i">
+          <mat-form-field>
+            <input matInput placeholder="Question" formControlName="title">
+          </mat-form-field>
 
-        <div  formArrayName="options">
-          <div *ngFor="let optionControl of questionControl.controls.options.controls; let j=index">
-            <div [formGroupName]="j">
-              <mat-form-field>
-                <input matInput placeholder="Option" formControlName="answer">
-              </mat-form-field>
-              <mat-checkbox formControlName="correct">Correct answer</mat-checkbox>
+          <div formArrayName="options">
+            <div *ngFor="let optionControl of questionControl.controls.options.controls; let j=index">
+              <div [formGroupName]="j">
+                <mat-form-field>
+                  <input matInput placeholder="Option" formControlName="answer">
+                </mat-form-field>
+                <mat-checkbox formControlName="correct">Correct answer</mat-checkbox>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <button mat-raised-button id="saveQuiz" color="primary" type="submit">Save</button>
+  <div class="saveButton">
+    <button mat-raised-button id="saveQuiz" color="primary" type="submit">Save</button>
+  </div>
 </form>

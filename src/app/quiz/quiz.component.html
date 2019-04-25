@@ -1,9 +1,14 @@
-<mat-card (click)="clickedQuiz()">
+<mat-card>
   <mat-card-header>
     <mat-card-title>
       <h1>{{quizInput.title}}</h1>
     </mat-card-title>
   </mat-card-header>
-  <h3>Number of questions: {{quizInput.questions.length}}</h3>
-  <button mat-fab routerLink="../displayQuiz/{{quizInput._id}}">Start</button>
+  <mat-card-content>
+    <h3>Number of questions: {{quizInput.questions.length}}</h3>
+  </mat-card-content>
+  <mat-card-actions class="quizBtn">
+    <button mat-fab (click)="clickedQuiz()">Start</button>
+    <button mat-fab color="warn" class="delBtn">Delete</button>
+  </mat-card-actions>
 </mat-card>

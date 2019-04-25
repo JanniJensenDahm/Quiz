@@ -20,7 +20,12 @@ import { MatCardModule } from "@angular/material/card";
 import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
-import {QuizComponent} from "./quiz/quiz.component";
+import { QuizComponent } from './quiz/quiz.component';
+import { AppState } from './store';
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router'
+
+import { rootReducer } from './store';
 
 @NgModule({
   declarations: [
@@ -50,12 +55,20 @@ import {QuizComponent} from "./quiz/quiz.component";
     MatToolbarModule,
     MatMenuModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    NgReduxModule, NgReduxRouterModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [MatMenuModule]
 })
 export class AppModule {
+  constructor(
+    private ngRedux: NgRedux<AppState>,
+    private ngReduxRouter: NgReduxRouter){
+      this.ngRedux.configureStore(
+        rootReducer, {});
 
+        ngReduxRouter.initialize();
+    }
 }
