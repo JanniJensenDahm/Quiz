@@ -2,9 +2,12 @@
   <h1 class="title"><img id="homeBtn" src="../../assets/quiz.png" height="201" width="547"/></h1>
   <p id="allQuizzes" routerLink="allQuizzes">All Quizzes</p>
   <p id="createQuiz" routerLink="createQuiz">Create Quiz</p>
+  <p id="adminPage" routerLink="adminPage" *ngIf="adminLoggedIn">Admin</p>
   <p class="empty-space"></p>
-  <p id="logout">Log out</p>
+  <p class="logOutBtn" (click)="logOut()"><img class="logOut" src="../../assets/logout-icon.png"></p>
+  
 </mat-toolbar>
 
+<img id="worldPic" src="../../assets/world.png"/>
 
 <router-outlet></router-outlet>

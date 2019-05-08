@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Quiz} from "../entities/quiz";
-import {TempDataService} from "../service/temp-data.service";
+import { QuizActions } from '../quiz.actions';
+import { AuthService } from '../auth/auth.service';
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from '../store';
+import { Router, Route } from '@angular/router'
 
 @Component({
   selector: 'app-user',
@@ -9,13 +12,27 @@ import {TempDataService} from "../service/temp-data.service";
 })
 export class UserComponent implements OnInit {
 
-  quizzes: Quiz[];
+  events: string[] = [];
+  adminLoggedIn: boolean;
 
-  constructor(private tempData: TempDataService) { }
+  constructor(
+    private authService: AuthService,
+    private quizActions: QuizActions,
+    private ngRedux: NgRedux<AppState>,
+    private router: Router
+    ) { }
 
   ngOnInit() {
 
-    this.quizzes = this.tempData.getQuizzes();
+    this.ngRedux.select(state => state.quizzes).subscribe(result => {
+      this.adminLoggedIn = result.isAdminLoggedIn;
+    })
+  }
+
+  logOut() {
+    this.quizActions.setLoggedIn(false);
+    this.quizActions.setAdminLoggedIn(false);
+    this.router.navigate([''])
   }
 
 }

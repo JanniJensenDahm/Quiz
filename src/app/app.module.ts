@@ -22,10 +22,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { AppState } from './store';
-import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { NgRedux, NgReduxModule, DevToolsExtension } from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router'
 
 import { rootReducer } from './store';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,9 @@ import { rootReducer } from './store';
     MatMenuModule,
     MatCardModule,
     MatButtonModule,
-    NgReduxModule, NgReduxRouterModule.forRoot()
+    NgReduxModule, 
+    NgReduxRouterModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -65,10 +68,10 @@ import { rootReducer } from './store';
 export class AppModule {
   constructor(
     private ngRedux: NgRedux<AppState>,
-    private ngReduxRouter: NgReduxRouter){
-      this.ngRedux.configureStore(
-        rootReducer, {});
+    private ngReduxRouter: NgReduxRouter,
+    private devTool: DevToolsExtension){
 
-        ngReduxRouter.initialize();
+      this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+      ngReduxRouter.initialize();
     }
 }

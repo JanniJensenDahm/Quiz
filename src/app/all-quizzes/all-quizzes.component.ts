@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Quiz} from "../entities/quiz";
-import {TempDataService} from "../service/temp-data.service";
-import {Router} from "@angular/router";
+import { Quiz } from "../entities/quiz";
+import { TempDataService } from "../service/temp-data.service";
+import { Router } from "@angular/router";
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from '../store'
 
 @Component({
   selector: 'app-all-quizzes',
@@ -12,11 +14,15 @@ export class AllQuizzesComponent implements OnInit {
 
   quizzes: Quiz[];
 
-  constructor(private tempData: TempDataService, private  router: Router) { }
+  constructor(
+    private tempData: TempDataService, 
+    private  router: Router,
+    private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit() {
-
-    this.quizzes = this.tempData.getQuizzes();
+    this.ngRedux.select(state => state.quizzes).subscribe(result =>{
+      this.quizzes = result.quizzes;
+    });
   }
 
   quizClicked(quiz : Quiz) {

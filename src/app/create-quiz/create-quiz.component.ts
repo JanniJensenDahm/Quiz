@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { TempDataService } from '../service/temp-data.service';
 import {Router} from "@angular/router";
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from '../store';
+import { Quiz } from '../entities/quiz';
+import { QuizActions } from '../quiz.actions'
+import { QuizApiService } from '../quiz-api.service'
 
 @Component({
   selector: 'app-create-quiz',
@@ -10,16 +15,36 @@ import {Router} from "@angular/router";
 })
 export class CreateQuizComponent implements OnInit {
   createQuiz: FormGroup;
+  quizzes: Quiz[];
 
   constructor(
     private fb: FormBuilder,
     private data: TempDataService,
-    private router: Router) { }
+    private router: Router,
+    private ngRedux: NgRedux<AppState>,
+    private quizActions: QuizActions,
+    private quizApi: QuizApiService) { }
+
+    ngOnInit() {
+      this.createQuiz = this.fb.group({
+        title: [''],
+        questions: this.fb.array([]),
+      })
+    }
 
   saveNewQuiz() {
-    this.data.saveQuiz(this.createQuiz.value);
-    this.router.navigate(['user/allQuizzes']);
+    this.quizApi.createQuiz(this.createQuiz.value).subscribe(result => {
+      this.createQuiz.value._id = result._id;
+      console.log(this.createQuiz.value)
+      this.quizActions.createQuiz(this.createQuiz.value);
+      this.router.navigate(['user/allQuizzes']);
+    }, error => {
+      console.log('Error: ' + error)
+    });
+    //this.data.saveQuiz(this.createQuiz.value);
+    //this.router.navigate(['user/allQuizzes']);
   }
+  
 
   createNewQuestion() {
     const question = this.fb.group({
@@ -35,19 +60,12 @@ export class CreateQuizComponent implements OnInit {
     options.push(this.createNewOptionGroup());
     questions.push(question);
   }
+  
 
   private createNewOptionGroup(): FormGroup {
     return this.fb.group({
       answer: ['', Validators.required],
       correct: [false, Validators.required]
     });
-  }
-
-
-  ngOnInit() {
-    this.createQuiz = this.fb.group({
-      title: [''],
-      questions: this.fb.array([]),
-    })
   }
 }

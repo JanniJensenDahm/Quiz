@@ -11,7 +11,7 @@ export class AuthService {
   redirectUrl: string;
 
   login(isAdmin): Observable<boolean>{
-    //this.isAdmin = isAdmin;
+    this.isAdmin = isAdmin;
 
     return of(true).pipe(
       delay(1000),
