@@ -1,0 +1,16 @@
+<mat-card class="displayQuiz">
+  <div>
+    Quiz Title: {{quiz.title}}
+  </div>
+
+  <div *ngFor="let question of quiz.questions">
+    {{question.title}}
+
+    <div *ngFor="let option of question.options">
+      {{option.answer}}
+
+    </div>
+
+    <br>
+  </div>
+</mat-card>
