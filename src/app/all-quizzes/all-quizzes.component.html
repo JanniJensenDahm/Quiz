@@ -1,5 +1,20 @@
+<mat-card class="search">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Search" value="" [(ngModel)]="userSearch">
+    </mat-form-field>
+  </div>
+</mat-card>
+
+<mat-card class="loading" *ngIf="isLoading">
+  <div>
+    Loading, please wait.....
+  </div>
+</mat-card>
+
+
 <div class="scrollable">
-  <div class="quiz-matcard" *ngFor="let quiz of quizzes">
-    <app-quiz [quizInput]="quiz" (quizClicked)="quizClicked($event)"></app-quiz>
+  <div class="quiz-matcard" *ngFor="let quiz of quizzes | quizPipe: userSearch">
+    <app-quiz *ngIf="!isLoading" [quizInput]="quiz" (quizClicked)="quizClicked($event)"></app-quiz>
   </div>
 </div>

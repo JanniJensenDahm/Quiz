@@ -7,7 +7,8 @@ export class Quiz {
   title: string;
   created?: Date;
   questions: Question[];
-  ratings?: Rating[]
+  ratings?: Rating[];
+  customerId?: string;
 }
 
 export class Question {

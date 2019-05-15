@@ -1,9 +1,8 @@
-<mat-card>
-  <mat-card-header>
+<mat-card class="quiz">
     <mat-card-title>
-      <h1>{{quizInput.title}}</h1>
+      <h2>{{quizInput.title}}</h2>
+      <p>{{quizInput.created | date: 'dd/MM/yyyy'}}</p>
     </mat-card-title>
-  </mat-card-header>
   <mat-card-content>
     <h3>Number of questions: {{quizInput.questions.length}}</h3>
   </mat-card-content>

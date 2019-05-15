@@ -32,11 +32,9 @@ export class CreateQuizComponent implements OnInit {
       })
     }
 
-  saveNewQuiz() {
+  onSubmit() {
     this.quizApi.createQuiz(this.createQuiz.value).subscribe(result => {
-      this.createQuiz.value._id = result._id;
-      console.log(this.createQuiz.value)
-      this.quizActions.createQuiz(this.createQuiz.value);
+      this.quizActions.createQuiz(result);
       this.router.navigate(['user/allQuizzes']);
     }, error => {
       console.log('Error: ' + error)

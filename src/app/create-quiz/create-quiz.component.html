@@ -1,6 +1,5 @@
-
-  <form [formGroup]="createQuiz" (ngSubmit)="saveNewQuiz()" autocomplete="off">
-      <mat-card class="quiz-matcard scrollable">
+<form [formGroup]="createQuiz" (ngSubmit)="onSubmit()" autocomplete="off">
+  <mat-card class="quiz-matcard scrollable">
     <div class="newQuiz">
       <div>
         <mat-form-field>
@@ -36,4 +35,4 @@
       </div>
     </div>
   </mat-card>
-  </form>
+</form>
