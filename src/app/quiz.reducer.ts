@@ -55,7 +55,7 @@ export function quizReducer(state: QuizState = INITIAL_STATE, action:any) {
     //action.payload: id of the quiz
     //how to create a new array with missing object from another array
     //const newArray = state.quizzes.filter(x => x._id != action.payload);
-    return
+    return tassign(state, { quizzes: state.quizzes.filter(quiz => quiz._id !== action.payload)});
   
   case QuizActions.CREATE_RATING:
     //action.payload: rating object, id of quiz

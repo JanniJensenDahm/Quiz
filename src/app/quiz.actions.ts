@@ -3,6 +3,7 @@ import { NgRedux } from '@angular-redux/store';
 import { AppState } from './store';
 import { Quiz, Rating } from './entities/quiz';
 import { QuizApiService } from './quiz-api.service';
+import { quizReducer } from './quiz.reducer';
 
 @Injectable({ providedIn: 'root' })
 
@@ -73,6 +74,13 @@ export class QuizActions {
       type: QuizActions.CREATE_RATING,
       //payload: {rating: rating, quizId: quizId} - hvis key og value har samme værdi skrives det kun en gang
       payload: { rating, quizId }
+    })
+  }
+
+  deleteQuiz(id : string) : void {
+    this.ngRedux.dispatch({
+      type: QuizActions.DELETE_QUIZ,
+      payload: id
     })
   }
 }

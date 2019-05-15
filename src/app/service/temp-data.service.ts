@@ -10,9 +10,18 @@ export class TempDataService {
   quizzes: Quiz[];
 
   constructor() {
-    this.quizzes = [];
+    this.quizzes = this.getQuizzes();
   }
 
+  getQuiz(id: string): Quiz {
+    return this.quizzes.find(quiz => quiz._id === id);
+  }
+
+  getQuizzes(): Quiz [] {
+    return this.quizzes;
+  }
+
+  /*
   saveQuiz(quiz): void{
     this.quizzes.push({
       _id: String(this.quizzes.length + 1),
@@ -32,19 +41,11 @@ export class TempDataService {
     console.log(this.quizzes)
   }
 
-  getQuiz(id: string): Quiz {
-    return this.getQuizzes().find(quiz => quiz._id === id);
-  }
-
-  getQuizzes(): Quiz [] {
-    return this.quizzes;
-  }
-
   findQuiz(searchForId: string): Quiz {
     return this.getQuizzes().find(quiz => quiz._id === searchForId);
   }
 
-  /*getQuizzes(): Quiz[] {
+  getQuizzes(): Quiz[] {
     return [
       {
         _id: '1',

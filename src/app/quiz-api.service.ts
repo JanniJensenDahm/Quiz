@@ -28,6 +28,7 @@ export class QuizApiService {
   }
 
   deleteQuiz(id: string) : Observable<any> {
-    return
+    const url = '${this.baseUrl}/${id}'
+    return this.http.delete(url)
   }
 }
