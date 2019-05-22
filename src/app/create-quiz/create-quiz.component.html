@@ -1,38 +1,39 @@
 <form [formGroup]="createQuiz" (ngSubmit)="onSubmit()" autocomplete="off">
-    <mat-card class="quiz-matcard scrollable">
-      <div class="newQuiz">
-        <div>
-          <mat-form-field>
-            <input id="quizTitle" matInput placeholder="Quiz Title" formControlName="title">
-          </mat-form-field>
-        </div>
-        <div>
-          <button id="newQuestion" type="button" mat-raised-button (click)="createNewQuestion()">New
-            Question
-          </button>
-          <button mat-raised-button class="saveBtn" color="primary" type="submit">Save</button>
-        </div>
-  
-        <div formArrayName="questions">
-          <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
-            <div class="newQuestion" [formGroupName]="i">
-              <mat-form-field>
-                <input matInput placeholder="Question" formControlName="title">
-              </mat-form-field>
-  
-              <div formArrayName="options">
-                <div *ngFor="let optionControl of questionControl.controls.options.controls; let j=index">
-                  <div [formGroupName]="j">
-                    <mat-form-field>
-                      <input matInput placeholder="Option" formControlName="answer">
-                    </mat-form-field>
-                    <mat-checkbox formControlName="correct">Correct answer</mat-checkbox>
-                  </div>
+  <mat-card class="quiz-matcard scrollable">
+    <div class="newQuiz">
+      <div>
+        <mat-form-field>
+          <input id="quizTitle" matInput placeholder="Quiz Title" formControlName="title">
+        </mat-form-field>
+      </div>
+      <div>
+        <button id="newQuestion" type="button" mat-raised-button (click)="createNewQuestion()">New
+          Question
+        </button>
+        <button mat-raised-button class="saveBtn" color="primary" type="submit"
+          [disabled]="disableBtn">Save</button>
+      </div>
+
+      <div formArrayName="questions">
+        <div *ngFor="let questionControl of createQuiz.controls.questions.controls; let i=index">
+          <div class="newQuestion" [formGroupName]="i">
+            <mat-form-field>
+              <input matInput placeholder="Question" formControlName="title">
+            </mat-form-field>
+
+            <div formArrayName="options">
+              <div *ngFor="let optionControl of questionControl.controls.options.controls; let j=index">
+                <div [formGroupName]="j">
+                  <mat-form-field>
+                    <input matInput placeholder="Option" formControlName="answer">
+                  </mat-form-field>
+                  <mat-checkbox formControlName="correct">Correct answer</mat-checkbox>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </mat-card>
-  </form>
+    </div>
+  </mat-card>
+</form>

@@ -16,6 +16,7 @@ import { QuizApiService } from '../quiz-api.service'
 export class CreateQuizComponent implements OnInit {
   createQuiz: FormGroup;
   quizzes: Quiz[];
+  disableBtn;
 
   constructor(
     private fb: FormBuilder,
@@ -25,24 +26,26 @@ export class CreateQuizComponent implements OnInit {
     private quizActions: QuizActions,
     private quizApi: QuizApiService) { }
 
-    ngOnInit() {
-      this.createQuiz = this.fb.group({
-        title: [''],
-        questions: this.fb.array([]),
-      })
-    }
+  ngOnInit() {
+    this.createQuiz = this.fb.group({
+      title: [''],
+      questions: this.fb.array([]),
+    })
+  }
 
   onSubmit() {
+    //Execute first
     this.quizApi.createQuiz(this.createQuiz.value).subscribe(result => {
+      //Execute third
       this.quizActions.createQuiz(result);
       this.router.navigate(['user/allQuizzes']);
     }, error => {
       console.log('Error: ' + error)
     });
-    //this.data.saveQuiz(this.createQuiz.value);
-    //this.router.navigate(['user/allQuizzes']);
+    //Execute second
+    this.disableBtn = true;
   }
-  
+
 
   createNewQuestion() {
     const question = this.fb.group({
@@ -58,7 +61,7 @@ export class CreateQuizComponent implements OnInit {
     options.push(this.createNewOptionGroup());
     questions.push(question);
   }
-  
+
 
   private createNewOptionGroup(): FormGroup {
     return this.fb.group({
