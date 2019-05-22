@@ -25,13 +25,6 @@ export class DisplayQuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /*
-    const id = '1';
-    this.quizInput = this.tempData.findQuiz(id)
-    */
-    /*const id = this.route.snapshot.paramMap.get("id");
-    this.quiz = this.tempData.getQuiz(id);*/
-
     this.quizActions.getQuizzes();
     this.ngRedux.select(x => x.quizzes).subscribe(result => {
       this.quizzes = result.quizzes;

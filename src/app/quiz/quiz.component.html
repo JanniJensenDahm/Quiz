@@ -1,5 +1,6 @@
 <mat-card class="quiz">
     <mat-card-title>
+      <img (click)="editQuiz()" class="edit" src="../../assets/edit.png">
       <h2>{{quizInput.title}}</h2>
       <p>{{quizInput.created | date: 'dd/MM/yyyy'}}</p>
     </mat-card-title>
@@ -8,6 +9,6 @@
   </mat-card-content>
   <mat-card-actions class="quizBtn">
     <button mat-fab (click)="clickedQuiz()">Start</button>
-    <button mat-fab color="warn" class="delBtn" (click)="quizDelete()">Delete</button>
+    <button mat-fab color="warn" class="delBtn" (click)="deleteQuiz()">Delete</button>
   </mat-card-actions>
 </mat-card>

@@ -14,6 +14,8 @@ export class QuizComponent implements OnInit {
 
   @Input() quizInput : Quiz;
   @Output() quizClicked : EventEmitter<any> = new EventEmitter<any>();
+  @Output() quizEdit : EventEmitter<any> = new EventEmitter<any>();
+  @Output() quizDelete : EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private quizApi: QuizApiService,
@@ -25,17 +27,23 @@ export class QuizComponent implements OnInit {
   }
 
   clickedQuiz() {
-    console.log(this.quizInput._id);
-    console.log(this.quizInput.title);
     this.quizClicked.emit(this.quizInput);
   }
 
-  quizDelete() {
+  deleteQuiz() {
+    this.quizDelete.emit(this.quizInput)
+  }
+
+  /*quizDelete() {
     this.quizApi.deleteQuiz(this.quizInput._id).subscribe(result => {
       this.quizActions.deleteQuiz(result);
       this.router.navigate(['user/allQuizzes'])
     }, error => {
       console.log('Error: ' + error)
     })
+  }*/
+
+  editQuiz() {
+    this.quizEdit.emit(this.quizInput)
   }
 }

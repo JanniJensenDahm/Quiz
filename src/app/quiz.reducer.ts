@@ -4,7 +4,7 @@ import { tassign } from 'tassign';
 import { TempDataService } from './service/temp-data.service';
 
 let temp = new TempDataService();
-const INITIAL_STATE: QuizState = {isLoggedIn: false, isAdminLoggedIn: false, quizzes: temp.quizzes, isLoading: false }
+const INITIAL_STATE: QuizState = {isLoggedIn: false, isAdminLoggedIn: false, quizzes: [], isLoading: false }
 
 export function quizReducer(state: QuizState = INITIAL_STATE, action:any) {
  switch (action.type) {

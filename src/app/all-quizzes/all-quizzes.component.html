@@ -15,6 +15,6 @@
 
 <div class="scrollable">
   <div class="quiz-matcard" *ngFor="let quiz of quizzes | quizPipe: userSearch">
-    <app-quiz *ngIf="!isLoading" [quizInput]="quiz" (quizClicked)="quizClicked($event)"></app-quiz>
+    <app-quiz *ngIf="!isLoading" [quizInput]="quiz" (quizClicked)="quizClicked($event)" (quizEdit)="quizEdit($event)" (quizDelete)="quizDelete($event)"></app-quiz>
   </div>
 </div>

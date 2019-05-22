@@ -8,12 +8,12 @@ describe('quiz reducer tests', () => {
   
   // each it block is a test case.
   it('should set state to true when logging in', () => {
-    let startState = {isLoggedIn: undefined, isAdminLoggedIn: undefined, quizzes: []};
+    let startState = {isLoggedIn: undefined, isAdminLoggedIn: undefined, quizzes: [], isLoading: false};
     deepFreeze(startState);
     let actionObj = { 
       type: QuizActions.LOG_IN, payload: true};
     let newStateObj = quizReducer(startState, actionObj);
-    expect(newStateObj).toEqual({isLoggedIn: true, quizzes: []});
+    expect(newStateObj).toEqual({isLoggedIn: true, isAdminLoggedIn: true, quizzes: [], isLoading: false});
   });
 
   it('should create new ', () => {

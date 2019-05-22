@@ -3,7 +3,6 @@ import { NgRedux } from '@angular-redux/store';
 import { AppState } from './store';
 import { Quiz, Rating } from './entities/quiz';
 import { QuizApiService } from './quiz-api.service';
-import { quizReducer } from './quiz.reducer';
 
 @Injectable({ providedIn: 'root' })
 
@@ -40,7 +39,6 @@ export class QuizActions {
         payload: error
       })
     });
-
   }
 
 
@@ -77,10 +75,10 @@ export class QuizActions {
     })
   }
 
-  deleteQuiz(id : string) : void {
+  deleteQuiz(id: string) {
     this.ngRedux.dispatch({
       type: QuizActions.DELETE_QUIZ,
       payload: id
-    })
+    });
   }
 }

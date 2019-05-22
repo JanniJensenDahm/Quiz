@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { TempDataService } from '../service/temp-data.service';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../store';
 import { Quiz } from '../entities/quiz';

@@ -26,7 +26,8 @@ import { NgRedux, NgReduxModule, DevToolsExtension } from '@angular-redux/store'
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router'
 import { rootReducer } from './store';
 import { HttpClientModule } from '@angular/common/http';
-import { QuizPipe } from './quiz.pipe'
+import { QuizPipe } from './quiz.pipe';
+import { UpdateQuizComponent } from './update-quiz/update-quiz.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { QuizPipe } from './quiz.pipe'
     HomeComponent,
     DisplayQuizComponent,
     QuizComponent,
-    QuizPipe
+    QuizPipe,
+    UpdateQuizComponent
   ],
   imports: [
     BrowserModule,

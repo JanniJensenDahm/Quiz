@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../store'
 import { QuizActions } from '../quiz.actions';
+import { QuizApiService } from '../quiz-api.service';
 
 @Component({
   selector: 'app-all-quizzes',
@@ -20,7 +21,8 @@ export class AllQuizzesComponent implements OnInit {
     private tempData: TempDataService, 
     private  router: Router,
     private ngRedux: NgRedux<AppState>,
-    private quizActions: QuizActions) { }
+    private quizActions: QuizActions,
+    private quizApi: QuizApiService) { }
 
   ngOnInit() {
     this.ngRedux.select(state => state.quizzes).subscribe(result =>{
@@ -35,4 +37,14 @@ export class AllQuizzesComponent implements OnInit {
     this.router.navigate(['/user/displayQuiz/' + quiz._id]);
   }
 
+  quizEdit(quiz : Quiz)
+  {
+    this.router.navigate(['/user/updateQuiz/' + quiz._id]);
+  }
+
+  quizDelete(quiz : Quiz) {
+    this.quizApi.deleteQuiz(quiz._id).subscribe(result => {
+      this.quizActions.deleteQuiz(quiz._id);
+    })
+  }
 }
