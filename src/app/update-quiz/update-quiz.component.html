@@ -25,11 +25,9 @@
             <div *ngFor="let optionControl of questionControl.get('options').controls; let j=index">
               <div [formGroupName]="j">
                 <mat-form-field>
-                  <input matInput placeholder="Option" formControlName="answer"
-                    value="{{optionControl.answer}}">
+                  <input matInput placeholder="Option" formControlName="answer">
                 </mat-form-field>
-                <mat-checkbox formControlName="correct" value="{{optionControl.correct}}">Correct answer
-                </mat-checkbox>
+                <mat-checkbox formControlName="correct">Correct answer</mat-checkbox>
               </div>
             </div>
           </div>
