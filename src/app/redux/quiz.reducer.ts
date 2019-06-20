@@ -44,12 +44,12 @@ export function quizReducer(state: QuizState = INITIAL_STATE, action:any) {
     // state.quizzes.push(action.payload);
     // return state;
     // newState.push(action.payload);
-    return tassign(state, { quizzes: [...state.quizzes, action.payload] });
+    return tassign(state, { quizzes: [...state.quizzes.splice(action.payload._id, 1, action.payload)] });
 
   case QuizActions.UPDATE_QUIZ:
     //action.payload: index of quiz
     //how to replace an object in an array without mutating state
-    return
+    return tassign(state, { quizzes: [...state.quizzes, action.payload]})
 
   case QuizActions.DELETE_QUIZ:
     //action.payload: id of the quiz

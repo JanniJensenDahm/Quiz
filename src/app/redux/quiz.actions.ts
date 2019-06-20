@@ -66,13 +66,11 @@ export class QuizActions {
       payload: quiz
     });
   }
-
-  createRating(rating: Rating, quizId: string) {
+  updateQuiz(quiz : Quiz) {
     this.ngRedux.dispatch({
-      type: QuizActions.CREATE_RATING,
-      //payload: {rating: rating, quizId: quizId} - hvis key og value har samme værdi skrives det kun en gang
-      payload: { rating, quizId }
-    })
+      type: QuizActions.UPDATE_QUIZ,
+      payload: quiz
+    });
   }
 
   deleteQuiz(id: string) {
@@ -80,5 +78,13 @@ export class QuizActions {
       type: QuizActions.DELETE_QUIZ,
       payload: id
     });
+  }
+
+  createRating(rating: Rating, quizId: string) {
+    this.ngRedux.dispatch({
+      type: QuizActions.CREATE_RATING,
+      //payload: {rating: rating, quizId: quizId} - hvis key og value har samme værdi skrives det kun en gang
+      payload: { rating, quizId }
+    })
   }
 }

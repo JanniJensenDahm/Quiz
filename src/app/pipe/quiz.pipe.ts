@@ -14,7 +14,7 @@ export class QuizPipe implements PipeTransform {
     }
     // Write code that only returns the quiz objects that match the search
 
-    return quizzes.filter(quiz => quiz.title.indexOf(search) !== -1);
+    return quizzes.filter(quiz => quiz.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
   }
 
 }
