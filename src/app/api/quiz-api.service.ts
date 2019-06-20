@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Quiz } from './entities/quiz';
+import { Quiz } from '../entities/quiz';
 import { Observable } from 'rxjs';
 
 @Injectable({

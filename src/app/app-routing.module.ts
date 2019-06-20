@@ -21,8 +21,9 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, children:[
       { path: 'about', component: AboutComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent},
     ]},
-  { path: 'user', component: UserComponent, /*canActivate: [AuthGuard],*/
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard],
     children: [
       { path: 'allQuizzes', component: AllQuizzesComponent },
       { path: 'createQuiz', component: CreateQuizComponent },
@@ -30,7 +31,7 @@ const routes: Routes = [
       { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
       { path: 'updateQuiz/:id', component: UpdateQuizComponent}
     ]},
-  { path: 'register', component: RegisterComponent},
+  
 
 
   //If nothing matches, show page not found

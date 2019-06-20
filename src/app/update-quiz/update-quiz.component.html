@@ -1,7 +1,6 @@
-<form [formGroup]="editQuiz">
+<form [formGroup]="editQuiz" (ngSubmit)="onSubmit()">
   <mat-card class="editQuizCard">
     <div class="editQuiz">
-      <div>Quiz ID: <span>{{quiz._id}}</span></div>
       <mat-form-field>
         <input id="quizTitle" matInput placeholder="Quiz Title" formControlName="title">
       </mat-form-field>

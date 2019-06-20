@@ -21,12 +21,12 @@ import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DisplayQuizComponent } from './display-quiz/display-quiz.component';
 import { QuizComponent } from './quiz/quiz.component';
-import { AppState } from './store';
+import { AppState } from './redux/store';
 import { NgRedux, NgReduxModule, DevToolsExtension } from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router'
-import { rootReducer } from './store';
+import { rootReducer } from './redux/store';
 import { HttpClientModule } from '@angular/common/http';
-import { QuizPipe } from './quiz.pipe';
+import { QuizPipe } from './pipe/quiz.pipe';
 import { UpdateQuizComponent } from './update-quiz/update-quiz.component'
 
 @NgModule({

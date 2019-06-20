@@ -2,8 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from "../entities/quiz";
 import {TempDataService} from "../service/temp-data.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import { QuizApiService } from '../quiz-api.service';
-import { QuizActions } from '../quiz.actions';
+import { QuizApiService } from '../api/quiz-api.service';
+import { QuizActions } from '../redux/quiz.actions';
 
 @Component({
   selector: 'app-quiz',

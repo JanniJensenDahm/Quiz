@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from './store';
-import { Quiz, Rating } from './entities/quiz';
-import { QuizApiService } from './quiz-api.service';
+import { Quiz, Rating } from '../entities/quiz';
+import { QuizApiService } from '../api/quiz-api.service';
 
 @Injectable({ providedIn: 'root' })
 

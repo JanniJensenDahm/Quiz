@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth/auth.service";
-import { QuizActions } from '../quiz.actions';
+import { QuizActions } from '../redux/quiz.actions';
 
 @Component({
   selector: 'app-login',

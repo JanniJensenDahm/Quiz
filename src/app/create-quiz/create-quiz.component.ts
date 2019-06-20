@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { TempDataService } from '../service/temp-data.service';
 import { Router } from "@angular/router";
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../store';
+import { AppState } from '../redux/store';
 import { Quiz } from '../entities/quiz';
-import { QuizActions } from '../quiz.actions'
-import { QuizApiService } from '../quiz-api.service'
+import { QuizActions } from '../redux/quiz.actions'
+import { QuizApiService } from '../api/quiz-api.service'
 
 @Component({
   selector: 'app-create-quiz',
@@ -42,7 +42,7 @@ export class CreateQuizComponent implements OnInit {
     }, error => {
       console.log('Error: ' + error)
     });
-    //Execute second
+    //Execute second - create QuizActions.DISABLE_SAVEBTN
     this.disableBtn = true;
   }
 

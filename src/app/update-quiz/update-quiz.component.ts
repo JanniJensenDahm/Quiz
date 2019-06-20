@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TempDataService } from '../service/temp-data.service';
-import { ActivatedRoute } from '@angular/router';
-import { QuizActions } from '../quiz.actions';
+import {ActivatedRoute, Router} from '@angular/router';
+import { QuizActions } from '../redux/quiz.actions';
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../store';
+import { AppState } from '../redux/store';
 import { Quiz } from '../entities/quiz';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import {QuizApiService} from "../api/quiz-api.service";
 
 @Component({
   selector: 'app-update-quiz',
@@ -24,7 +25,9 @@ export class UpdateQuizComponent implements OnInit {
     private quizActions: QuizActions,
     private ngRedux: NgRedux<AppState>,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private quizApi: QuizApiService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,11 +38,11 @@ export class UpdateQuizComponent implements OnInit {
 
     this.quiz = this.quizzes.find(quiz => quiz._id === this.activatedRoute.snapshot.params.id);
     
-    console.log(this.quiz)
+    console.log(this.quiz);
     this.editQuiz = this.fb.group({
       title: [this.quiz.title, Validators.required],
       questions: this.fb.array([])
-    })
+    });
 
     let index = 0;
     this.quiz.questions.forEach(element => {
@@ -48,11 +51,8 @@ export class UpdateQuizComponent implements OnInit {
         title: [element.title],
         options: this.fb.array([])
       }));
-      console.log(this.quiz)
-      console.log(this.editQuiz)
-      //const options = (<FormGroup>questions.controls[index]).controls.options as FormArray;
+
       const options = questions.controls[index].controls.options as FormArray;
-      console.log("options " + options)
       this.quiz.questions[index].options.forEach( option => {
         options.push(this.fb.group({
           answer: [option.answer],
@@ -61,7 +61,41 @@ export class UpdateQuizComponent implements OnInit {
       });
       index++;
     });
-    
-    console.log(this.editQuiz)
+  }
+
+  createNewQuestion() {
+    const question = this.fb.group({
+      title: ['', Validators.required],
+      options: this.fb.array([])
+    });
+
+    const questions = this.editQuiz.controls.questions as FormArray;
+    const options = question.controls.options as FormArray;
+    options.push(this.createNewOptionGroup());
+    options.push(this.createNewOptionGroup());
+    options.push(this.createNewOptionGroup());
+    options.push(this.createNewOptionGroup());
+    questions.push(question);
+  }
+
+
+  private createNewOptionGroup(): FormGroup {
+    return this.fb.group({
+      answer: ['', Validators.required],
+      correct: [false, Validators.required]
+    });
+  }
+
+  onSubmit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    let quiz = this.editQuiz.value as Quiz;
+
+    quiz.customerId = 'janni';
+    quiz._id = id;
+
+    this.quizApi.updateQuiz(quiz).subscribe(quizFormWs => {
+      this.quizActions.updateQuiz(quizFormWs);
+      this.router.navigate(['/user/allQuizzes']);
+    })
   }
 }

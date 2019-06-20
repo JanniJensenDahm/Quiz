@@ -3,9 +3,9 @@ import { Quiz } from "../entities/quiz";
 import { TempDataService } from "../service/temp-data.service";
 import { Router } from "@angular/router";
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../store'
-import { QuizActions } from '../quiz.actions';
-import { QuizApiService } from '../quiz-api.service';
+import { AppState } from '../redux/store'
+import { QuizActions } from '../redux/quiz.actions';
+import { QuizApiService } from '../api/quiz-api.service';
 
 @Component({
   selector: 'app-all-quizzes',

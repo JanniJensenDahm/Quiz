@@ -1,9 +1,9 @@
-/* import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DisplayQuizComponent } from './display-quiz.component';
 
 describe('DisplayQuizComponent', () => {
-  let component: DisplayQuizComponent;
+  /*let component: DisplayQuizComponent;
   let fixture: ComponentFixture<DisplayQuizComponent>;
 
   beforeEach(async(() => {
@@ -21,6 +21,5 @@ describe('DisplayQuizComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  });*/
 });
- */

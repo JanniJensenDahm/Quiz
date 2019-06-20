@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../entities/quiz";
 import {TempDataService} from "../service/temp-data.service";
 import {ActivatedRoute} from "@angular/router";
-import { QuizActions } from '../quiz.actions';
+import { QuizActions } from '../redux/quiz.actions';
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../store';
+import { AppState } from '../redux/store';
 
 @Component({
   selector: 'app-display-quiz',

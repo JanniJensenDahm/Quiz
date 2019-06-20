@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizActions } from '../quiz.actions';
+import { QuizActions } from '../redux/quiz.actions';
 import { AuthService } from '../auth/auth.service';
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../store';
+import { AppState } from '../redux/store';
 import { Router, Route } from '@angular/router'
 
 @Component({
