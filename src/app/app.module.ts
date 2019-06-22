@@ -27,7 +27,8 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router'
 import { rootReducer } from './redux/store';
 import { HttpClientModule } from '@angular/common/http';
 import { QuizPipe } from './pipe/quiz.pipe';
-import { UpdateQuizComponent } from './update-quiz/update-quiz.component'
+import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
+import { MatChipsModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { UpdateQuizComponent } from './update-quiz/update-quiz.component'
     DisplayQuizComponent,
     QuizComponent,
     QuizPipe,
-    UpdateQuizComponent
+    UpdateQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,8 @@ import { UpdateQuizComponent } from './update-quiz/update-quiz.component'
     MatButtonModule,
     NgReduxModule, 
     NgReduxRouterModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

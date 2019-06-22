@@ -64,6 +64,7 @@ export function quizReducer(state: QuizState = INITIAL_STATE, action:any) {
     //action.payload.rating
     //action.payload.quizId
     //How to add an object to an array within an object in an array
+    return tassign(state, {quizzes: [[...state.quizzes][action.payload.quizId], action.payload.rating]});
 
   default:
     return state;

@@ -36,8 +36,34 @@ describe('quiz reducer tests', () => {
   });
 
   //Test update quiz
+  it('should update an existing quiz', () => {
+    let startState = {quizzes: []} as QuizState;
+    deepFreeze(startState);
+    let quiz = { title: 'Test quiz', questions: [] } as Quiz;
+    let createActionObj = { type: QuizActions.CREATE_QUIZ, payload: quiz };
+    let newStateObj = quizReducer(startState, createActionObj);
+
+    quiz = {title: 'UPDATED Test quiz', questions: []} as Quiz;
+    let updateActionObj = {type: QuizActions.UPDATE_QUIZ, payload: quiz}
+    let state2 = quizReducer(newStateObj, updateActionObj);
+
+    expect(newStateObj.quizzes[0].title).not.toEqual(state2.quizzes[0].title)
+  });
 
   //Test delete quiz
+  it('Should delete an existing quiz', () => {
+    let startState = {quizzes: []} as QuizState;
+    deepFreeze(startState);
+    let quiz = {title: 'Test quiz', questions: []} as Quiz;
+    let delActionObj = {type: QuizActions.DELETE_QUIZ, payload: quiz};
+    let createActionObj = {type: QuizActions.CREATE_QUIZ, payload: quiz};
+    let newStateObj = quizReducer(startState, createActionObj);
+    let x = quizReducer(newStateObj, createActionObj);
+
+    expect(x.quizzes.length).toBe(2);
+    quizReducer(x, delActionObj);
+    expect(newStateObj.quizzes.length).toBe(1);
+  });
 
   //Test wrong input
 

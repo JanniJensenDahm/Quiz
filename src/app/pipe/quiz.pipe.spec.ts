@@ -26,7 +26,76 @@ describe('QuizPipe', () => {
           answer: 'Answer 4',
           correct: false
         }],
-    }]
+    }],
+  },
+  {
+    _id: '2',
+    title: 'Title 2',
+    questions: [{
+      title: 'Question 2',
+      options: [{
+        answer: 'Answer 1',
+        correct: true
+      },
+        {
+          answer: 'Answer 2',
+          correct: false
+        },
+        {
+          answer: 'Anser 3',
+          correct: false
+        },
+        {
+          answer: 'Answer 4',
+          correct: false
+        }],
+    }],
+  },
+  {
+    _id: '3',
+    title: 'Title 3',
+    questions: [{
+      title: 'Question 3',
+      options: [{
+        answer: 'Answer 1',
+        correct: true
+      },
+        {
+          answer: 'Answer 2',
+          correct: false
+        },
+        {
+          answer: 'Anser 3',
+          correct: false
+        },
+        {
+          answer: 'Answer 4',
+          correct: false
+        }],
+    }],
+  },
+  {
+    _id: '4',
+    title: 'Title 4',
+    questions: [{
+      title: 'Question 4',
+      options: [{
+        answer: 'Answer 1',
+        correct: true
+      },
+        {
+          answer: 'Answer 2',
+          correct: false
+        },
+        {
+          answer: 'Anser 3',
+          correct: false
+        },
+        {
+          answer: 'Answer 4',
+          correct: false
+        }],
+    }],
   }];
 
   beforeEach(() => {
@@ -40,7 +109,7 @@ describe('QuizPipe', () => {
   });
 
   //Create new quizzes and expect length of result to equal length of quizzes
-  it('all quizzes matches', () => {
+  it('should test if length of quizzes matches', () => {
     let result = pipe.transform(quizzes, '');
     expect(result.length).toBe(quizzes.length);
   });
@@ -52,8 +121,9 @@ describe('QuizPipe', () => {
   });
 
   //Create quizzes, search for Title and expect to get length of quizzes
-  it('should ',() => {
-
+  it('should search for Title',() => {
+    let result = pipe.transform(quizzes, 'Title');
+    expect(result.length).toBe(quizzes.length)
   });
 
   //Test wrong input

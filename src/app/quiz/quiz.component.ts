@@ -17,6 +17,8 @@ export class QuizComponent implements OnInit {
   @Output() quizEdit : EventEmitter<any> = new EventEmitter<any>();
   @Output() quizDelete : EventEmitter<any> = new EventEmitter<any>();
 
+  avrRating: number = 0.0
+
   constructor(
     private quizApi: QuizApiService,
     private quizActions: QuizActions,
@@ -24,6 +26,7 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.avrRating = 4.3
   }
 
   clickedQuiz() {

@@ -30,4 +30,8 @@ export class QuizApiService {
   deleteQuiz(id: string) : Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id, {responseType: 'text'});
   }
+
+  rateQuiz(quiz: Quiz) : Observable<any>{
+    return this.http.put(this.baseUrl + "/" + quiz._id, quiz, {responseType: 'text'})
+  }
 }

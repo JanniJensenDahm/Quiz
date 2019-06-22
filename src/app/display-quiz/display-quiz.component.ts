@@ -15,6 +15,10 @@ export class DisplayQuizComponent implements OnInit {
 
   quiz: Quiz;
   quizzes: Quiz[];
+  correct: number = 0;
+  clickedOptions: any = new Set();
+  
+
 
   constructor(
     private tempData: TempDataService,
@@ -31,6 +35,25 @@ export class DisplayQuizComponent implements OnInit {
     });
 
     this.quiz = this.quizzes.find(quiz => quiz._id === this.activatedRoute.snapshot.params.id);
+  }
+
+  correctAnswer(question, option, e) {
+    const addClass = e.target.classList 
+
+    if(!this.clickedOptions.has(option)){
+
+      if(option.correct){
+        this.correct += 1;
+        addClass.add('correct-answer')
+      }
+      else{
+        addClass.add('wrong-answer')
+      }
+    }
+
+    for (let i = 0; i < question.options.length; i++){
+      this.clickedOptions.add(question.options[i])
+    }
   }
 
 }
