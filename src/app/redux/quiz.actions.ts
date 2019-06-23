@@ -83,7 +83,7 @@ export class QuizActions {
   createRating(rating: Rating, quizId: string) {
     this.ngRedux.dispatch({
       type: QuizActions.CREATE_RATING,
-      //payload: {rating: rating, quizId: quizId} - hvis key og value har samme værdi skrives det kun en gang
+      //payload: {rating: rating, quizId: quizId} - hvis key og value har samme navn skrives det kun en gang
       payload: { rating, quizId }
     })
   }

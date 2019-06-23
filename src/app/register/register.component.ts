@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,16 +10,24 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private route: Router) {
   }
 
   ngOnInit() {
     this.registerForm = this.fb.group(
       {
-        name: ['', [Validators.required]],
-        age: ['', [Validators.required]],
-        username: ['', [Validators.required, Validators.minLength(3)]],
-        password: ['', Validators.required]
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
+        birthdate: ['', Validators.required],
+        gender: ['', Validators.required],
+        email: ['', Validators.required],
+        username: ['', [
+          Validators.required, 
+          Validators.minLength(3)]],
+        password: ['', [
+          Validators.required, Validators.minLength(8)]]
       }
     );
   }
@@ -27,9 +36,10 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm);
 
     if (this.registerForm.valid) {
-      // Data to server
+      console.log('Valid form ' + this.registerForm)
+      this.route.navigate(['home/login'])
     } else {
-      // Error message
+      console.log('You made a mistake')
     }
   }
 

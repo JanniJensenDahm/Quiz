@@ -24,7 +24,7 @@ export class Option {
 
 export class Rating {
   grade: number;
-  user: User;
+  user?: User;
   // timestamp: Date;
   // title: string;
   // message: string;

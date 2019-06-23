@@ -1,6 +1,6 @@
 form{
   width: 380px;
-  margin: 4em auto;
+  margin: 2em auto;
   padding: 3em 2em 2em 2em;
   background: grey;
   border: 1px solid #ebebeb;
@@ -11,7 +11,7 @@ form{
   position: relative;
   display: inline-block;
   padding: 12px 24px;
-  margin: .3em 2px 1em 2px;
+  margin-top: 15px;
   width: 40%;
   vertical-align: middle;
   color: #ffffff;
@@ -30,8 +30,12 @@ form{
   outline: 0;
 }
 
-.buttonSave{
+.button-save{
   background-color: #4a89dc;
   text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
   border-bottom: 2px solid #3160B6;
+}
+
+.register-input{
+  margin-bottom: 15px;
 }

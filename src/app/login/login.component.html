@@ -3,7 +3,7 @@
   <div>
     <mat-form-field>
       <input id="username" matInput type="text" placeholder="Username" formControlName="username">
-      <mat-error *ngIf="loginForm.controls.username.error?.required && loginForm.controls.username.touched">
+      <mat-error *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty">
         You must fill out the username
       </mat-error>
       <mat-error *ngIf="loginForm.controls.username.errors?.minlength && loginForm.controls.username.touched">
@@ -15,7 +15,7 @@
   <div>
     <mat-form-field>
       <input id="password" matInput type="password" placeholder="Password" formControlName="password">
-      <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
+      <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched">
         You must fill out the password
       </mat-error>
     </mat-form-field>

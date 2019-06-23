@@ -28,7 +28,8 @@ import { rootReducer } from './redux/store';
 import { HttpClientModule } from '@angular/common/http';
 import { QuizPipe } from './pipe/quiz.pipe';
 import { UpdateQuizComponent } from './update-quiz/update-quiz.component';
-import { MatChipsModule } from '@angular/material'
+import { MatChipsModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { MatChipsModule } from '@angular/material'
     NgReduxRouterModule.forRoot(),
     HttpClientModule,
     MatChipsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

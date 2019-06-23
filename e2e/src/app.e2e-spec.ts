@@ -55,7 +55,7 @@ describe('workspace-project App', () => {
 
     element(by.id('saveQuiz')).click();
     //Load page
-    browser.sleep(1000);
+    browser.sleep(10000);
 
     expect(element.all(by.css('h1')).getText()).toContain("Test Quiz");
   });

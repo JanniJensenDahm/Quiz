@@ -4,7 +4,7 @@
   </div>
 
   <div *ngFor="let question of quiz.questions">
-    <h2>{{question.title}}</h2>
+    <h3>{{question.title}}</h3>
 
     <div *ngFor="let option of question.options; let i = index">
       <mat-chip-list>
@@ -12,19 +12,18 @@
       </mat-chip-list>
     </div>
 
-    
+
   </div>
-  <h3>You got {{correct}} correct answers out of {{quiz.questions.length}}</h3>
-  <h3>Please rate the quiz:</h3>
-    <label class="rating" style="color: red; "><input type="radio" name="rating" value="1" >This quiz sucks!</label>
-    <br>
-    <label class="rating" style="color: orange"><input type="radio" name="rating" value="2">Kind of bad</label>
-    <br>
-    <label class="rating" style="color: yellow"><input type="radio" name="rating" value="3">Hmmm</label>
-    <br>
-    <label class="rating" style="color: lightgreen"><input type="radio" name="rating" value="4">Great quiz</label>
-    <br>
-    <label class="rating" style="color: blue"><input type="radio" name="rating" value="5">Best quiz ever!</label>
-    <br>
-    <button mat-raised-button type="submit">Finish quiz</button>
+  <h4>You got {{correct}} correct answers out of {{quiz.questions.length}}</h4>
+  <h4>Please rate the quiz:</h4>
+  <label class="rating" style="color: red"><input type="radio" name="rating" (click)="clickRating(1)">This quiz sucks!</label>
+  <br>
+  <label class="rating" style="color: orange"><input type="radio" name="rating" (click)="clickRating(2)">Kind of bad</label>
+  <br>
+  <label class="rating" style="color: yellow"><input type="radio" name="rating" (click)="clickRating(3)">Hmmm</label>
+  <br>
+  <label class="rating" style="color: lightgreen"><input type="radio" name="rating" (click)="clickRating(4)">Great quiz</label>
+  <br>
+  <label class="rating" style="color: blue"><input type="radio" name="rating" (click)="clickRating(5)">Best quiz ever!</label>
+  <br>
 </mat-card>
