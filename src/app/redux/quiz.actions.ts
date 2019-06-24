@@ -67,10 +67,12 @@ export class QuizActions {
     });
   }
   updateQuiz(quiz : Quiz) {
+    this.quizApi.updateQuiz(quiz).subscribe(quizzes =>{
     this.ngRedux.dispatch({
       type: QuizActions.UPDATE_QUIZ,
       payload: quiz
     });
+  });
   }
 
   deleteQuiz(id: string) {

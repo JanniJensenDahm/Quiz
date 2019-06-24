@@ -41,7 +41,8 @@ export class UpdateQuizComponent implements OnInit {
     console.log(this.quiz);
     this.editQuiz = this.fb.group({
       title: [this.quiz.title, Validators.required],
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
+      ratings: this.fb.array([])
     });
 
     let index = 0;
@@ -60,6 +61,14 @@ export class UpdateQuizComponent implements OnInit {
         }));
       });
       index++;
+    });
+    
+    this.quiz.ratings.forEach(element => {
+      const ratings = this.editQuiz.controls.ratings as FormArray;
+      ratings.push(this.fb.group({
+        grade: [element.grade],
+        user: [element.user]
+      }))
     });
   }
 
@@ -87,15 +96,18 @@ export class UpdateQuizComponent implements OnInit {
   }
 
   onSubmit() {
-    const id = this.route.snapshot.paramMap.get('id');
     let quiz = this.editQuiz.value as Quiz;
 
     quiz.customerId = 'janni';
-    quiz._id = id;
+    quiz._id = this.route.snapshot.paramMap.get('id');
+    console.log('ratings: ', quiz.ratings)
 
     this.quizApi.updateQuiz(quiz).subscribe(quizFormWs => {
       this.quizActions.updateQuiz(quizFormWs);
-      this.router.navigate(['/user/allQuizzes']);
+      setTimeout(() =>{
+        this.router.navigate(['/user/allQuizzes']);
+      }, 1000);
+      
     })
   }
 }

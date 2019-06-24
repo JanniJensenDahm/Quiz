@@ -33,7 +33,6 @@ export class AllQuizzesComponent implements OnInit {
   }
 
   quizClicked(quiz : Quiz) {
-    console.log(quiz);
     this.router.navigate(['/user/displayQuiz/' + quiz._id]);
   }
 

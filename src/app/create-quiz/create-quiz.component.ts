@@ -7,6 +7,7 @@ import { AppState } from '../redux/store';
 import { Quiz } from '../entities/quiz';
 import { QuizActions } from '../redux/quiz.actions'
 import { QuizApiService } from '../api/quiz-api.service'
+import { Gender } from '../entities/user';
 
 @Component({
   selector: 'app-create-quiz',
@@ -34,6 +35,33 @@ export class CreateQuizComponent implements OnInit {
   }
 
   onSubmit() {
+
+    this.createQuiz.value.visible = false;
+    this.createQuiz.value.user = {
+      _id: '1',
+      firstname: 'Janni',
+      lastname: 'Jensen-Dahm',
+      birthDate: new Date(1994, 9, 11),
+      gender: Gender.FEMALE,
+      email: 'janni@jensen-dahm.dk',
+      username: 'JJD',
+      password: 'JJD'
+    };
+    this.createQuiz.value.created = new Date();
+    this.createQuiz.value.ratings = [{
+      grade: 0,
+      user: {
+        _id: '1',
+        firstname: 'Janni',
+        lastname: 'Jensen-Dahm',
+        birthDate: new Date(1994, 9, 11),
+        gender: Gender.FEMALE,
+        email: 'janni@jensen-dahm.dk',
+        username: 'JJD',
+        password: 'JJD'
+      }
+    }]
+
     //Execute first
     this.quizApi.createQuiz(this.createQuiz.value).subscribe(result => {
       //Execute third

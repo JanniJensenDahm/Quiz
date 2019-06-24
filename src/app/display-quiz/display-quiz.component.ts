@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { QuizActions } from '../redux/quiz.actions';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../redux/store';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-display-quiz',
@@ -25,7 +24,7 @@ export class DisplayQuizComponent implements OnInit {
     private quizActions: QuizActions,
     private ngRedux: NgRedux<AppState>,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -58,14 +57,16 @@ export class DisplayQuizComponent implements OnInit {
 
   clickRating(e) {
     console.log(e)
-    console.log('Printed object ' + this.quiz)
-    
+    console.log('Printed object ', this.quiz)
+
     this.quiz.ratings.push({
       grade: e,
       user: this.quiz.user
     });
     this.quizActions.updateQuiz(this.quiz)
-    this.router.navigate(['user/allQuizzes'])
+    setTimeout(() => {
+      this.router.navigate(['user/allQuizzes']);
+    }, 1000);
   }
 
 }

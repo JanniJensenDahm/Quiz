@@ -8,6 +8,7 @@ export class Quiz {
   created?: Date;
   questions: Question[];
   ratings?: Rating[];
+  avrRating?: number;
   customerId?: string;
 }
 
