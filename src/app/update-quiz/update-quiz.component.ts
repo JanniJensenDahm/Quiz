@@ -40,6 +40,7 @@ export class UpdateQuizComponent implements OnInit {
     
     console.log(this.quiz);
     this.editQuiz = this.fb.group({
+      created: this.quiz.created,
       title: [this.quiz.title, Validators.required],
       questions: this.fb.array([]),
       ratings: this.fb.array([])
@@ -62,7 +63,7 @@ export class UpdateQuizComponent implements OnInit {
       });
       index++;
     });
-    
+
     this.quiz.ratings.forEach(element => {
       const ratings = this.editQuiz.controls.ratings as FormArray;
       ratings.push(this.fb.group({

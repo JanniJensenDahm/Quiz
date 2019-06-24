@@ -4,8 +4,8 @@ export class Quiz {
   _id: string;
   visible?: boolean;
   user?: User;
-  title: string;
   created?: Date;
+  title: string;
   questions: Question[];
   ratings?: Rating[];
   avrRating?: number;

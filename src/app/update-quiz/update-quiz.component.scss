@@ -8,3 +8,35 @@
     max-height: 89%;
     background: rgb(67, 123, 179);
   }
+
+  .newQuestion{
+    margin: 0.5%;
+    padding: 0.5%;
+    float: left;
+    display: inline;
+    width: 30%;
+  }
+  
+  .saveButton{
+    width: 100%;
+  }
+  
+  .newQuiz{
+    margin: 0.5%;
+    padding: 0.5%;
+  }
+  
+  .scrollable{
+    overflow: auto;
+    position: absolute;
+  }
+  
+  #newQuestion{
+    background: darkgreen;
+  }
+  
+  .saveBtn{
+    position: absolute;
+    right: 1.5%;
+    margin: 0;
+  }

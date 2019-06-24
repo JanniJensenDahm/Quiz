@@ -5,6 +5,7 @@
     </mat-card-title>
   <mat-card-content>
     <h3>Number of questions: {{quizInput.questions.length}}</h3>
+    <h3>Created: {{quizInput.created | date: 'dd. MMM yyyy'}}</h3>
     <h3>Rate: {{quizInput.avrRating | number : '.1-1'}}/5.0</h3>
   </mat-card-content>
   <mat-card-actions class="quizBtn">
