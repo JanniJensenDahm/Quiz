@@ -28,7 +28,7 @@ export class QuizActions {
 
     //Call ws
     this.quizApi.getAllQuizzes().subscribe(quizzes =>{
-      console.log(quizzes.filter(quiz => quiz.customerId === 'janni'));
+      //console.log(quizzes.filter(quiz => quiz.customerId === 'janni'));
       this.ngRedux.dispatch({
         type: QuizActions.GET_QUIZZES_SUCCESS,
         payload: quizzes.filter(quiz => quiz.customerId === 'janni')
@@ -66,6 +66,7 @@ export class QuizActions {
       payload: quiz
     });
   }
+  
   updateQuiz(quiz : Quiz) {
     this.quizApi.updateQuiz(quiz).subscribe(quizzes =>{
     this.ngRedux.dispatch({

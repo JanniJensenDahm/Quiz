@@ -125,6 +125,4 @@ describe('QuizPipe', () => {
     let result = pipe.transform(quizzes, 'Title');
     expect(result.length).toBe(quizzes.length)
   });
-
-  //Test wrong input
 });

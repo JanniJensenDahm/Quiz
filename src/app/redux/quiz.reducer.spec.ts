@@ -65,6 +65,4 @@ describe('quiz reducer tests', () => {
     expect(newStateObj.quizzes.length).toBe(1);
   });
 
-  //Test wrong input
-
 });

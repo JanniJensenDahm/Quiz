@@ -32,6 +32,12 @@ export class CreateQuizComponent implements OnInit {
       title: [''],
       questions: this.fb.array([]),
     })
+    //Create first question
+    this.createNewQuestion();
+
+    this.ngRedux.select(state => state.quizzes).subscribe(result => {
+      this.quizzes = result.quizzes;
+    });
   }
 
   onSubmit() {
@@ -47,7 +53,6 @@ export class CreateQuizComponent implements OnInit {
       username: 'JJD',
       password: 'JJD'
     };
-    this.createQuiz.value.created = new Date();
     this.createQuiz.value.ratings = [{
       grade: 0,
       user: {
